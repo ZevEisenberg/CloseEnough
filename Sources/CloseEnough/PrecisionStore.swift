@@ -1,13 +1,13 @@
-struct ToleranceStore {
+struct PrecisionStore {
     private var storage: [ObjectIdentifier: Any] = [:]
 
     subscript<T>(_ type: T.Type) -> T {
         get {
             guard let value = storage[ObjectIdentifier(type)] else {
-                fatalError("Attempt to compare values of type \(T.self) without first registering acceptable closeness")
+                fatalError("Attempt to compare values of type \(T.self) without first registering precision for that type")
             }
             guard let typed = value as? T else {
-                fatalError("Stored closeness value \(value) was not of expected type \(T.self)")
+                fatalError("Stored precision value \(value) was not of expected type \(T.self)")
             }
             return typed
         }
@@ -30,4 +30,4 @@ struct ToleranceStore {
     }
 }
 
-var globalStorage = ToleranceStore()
+var globalPrecisionStore = PrecisionStore()

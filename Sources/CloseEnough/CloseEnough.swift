@@ -1,8 +1,8 @@
 import Foundation
 
-/// Annotated types are compared with a tolerance value when using `==` inside of XCTests. In non-test code, comparison is done using the wrapped type’s `Equatable` conformance.
+/// Annotated types are compared with a precision value when using `==` inside of XCTests. In non-test code, comparison is done using the wrapped type’s `Equatable` conformance.
 @propertyWrapper
-public struct CloseEnough<Wrapped: CloseEnoughable>: Equatable {
+public struct CloseEnough<Wrapped: EquatableWithPrecision>: Equatable {
     public var wrappedValue: Wrapped
 
     public init(wrappedValue: Wrapped) {
@@ -11,8 +11,8 @@ public struct CloseEnough<Wrapped: CloseEnoughable>: Equatable {
 
     public static func ==(lhs: Self, rhs: Self) -> Bool {
         if isTesting {
-            let tolerance: Wrapped = globalStorage[Wrapped.self]
-            return lhs.wrappedValue.isApproximatelyEqual(to: rhs.wrappedValue, tolerance: tolerance)
+            let precision: Wrapped = globalPrecisionStore[Wrapped.self]
+            return lhs.wrappedValue.isApproximatelyEqual(to: rhs.wrappedValue, precision: precision)
         } else {
             return lhs.wrappedValue == rhs.wrappedValue
         }

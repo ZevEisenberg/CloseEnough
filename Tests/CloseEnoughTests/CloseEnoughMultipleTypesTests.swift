@@ -14,14 +14,14 @@ final class CloseEnoughBothTests: XCTestCase {
         let a = MyThing(angle: .radians(1), double: 1.0002)
         let b = MyThing(angle: .radians(1.0002), double: 1)
 
-        withEnoughClosenesses([
+        withPrecisions([
             Angle.radians(0.001),
             0.001,
         ]) {
             XCTAssertEqual(a, b)
         }
 
-        withEnoughClosenesses([
+        withPrecisions([
             Angle.radians(0.0001),
             0.0001
         ]) {
