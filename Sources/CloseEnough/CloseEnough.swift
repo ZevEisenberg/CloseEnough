@@ -1,5 +1,6 @@
 import Foundation
 
+/// Annotated types are compared with a tolerance value when using `==` inside of XCTests. In non-test code, comparison is done using the wrapped type’s `Equatable` conformance.
 @propertyWrapper
 public struct CloseEnough<Wrapped: CloseEnoughable>: Equatable {
     public var wrappedValue: Wrapped
