@@ -4,6 +4,9 @@ extension Comparable where Self: CloseEnoughable & SignedNumeric {
     }
 }
 
+@available(iOS 14.0, macOS 11.0, macCatalyst 14.0, tvOS 14.0, watchOS 7.0, *)
+extension Float16: CloseEnoughable {}
+
 extension Float: CloseEnoughable {}
 extension Double: CloseEnoughable {}
 
