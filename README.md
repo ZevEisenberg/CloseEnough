@@ -14,7 +14,7 @@ struct Outer: Equatable {
   var foo: Double
 
   @CloseEnough
-  var bar: Angle // SwiftUI's Angle type, for example
+  var bar: Date
 
   var inner: Inner // it works for nested structs too!
 }
@@ -33,13 +33,13 @@ You must provide a precision value for each type that is present in the structs 
 // Tests
 withPrecisions([
   Double.self: 0.0001,
-  Angle.self: Angle.degrees(0.0001),
+  Date.self: TimeInterval(10), // When comparing dates, difference is expressed as a time interval
 ]) {
   XCTAssertEqual(
     someValue,
     Outer(
       foo: 1.5,
-      bar: 0.2,
+      bar: Date(timeIntervalSinceReferenceDate: 1234),
       inner: Inner(
         baz: 11
       )
