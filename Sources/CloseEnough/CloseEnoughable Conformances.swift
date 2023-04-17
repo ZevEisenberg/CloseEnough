@@ -1,3 +1,5 @@
+import Foundation
+
 extension Comparable where Self: EquatableWithPrecision & SignedNumeric {
     public func isApproximatelyEqual(to other: Self, precision: Self) -> Bool {
         abs(self - other) < precision
@@ -18,3 +20,9 @@ extension Angle: EquatableWithPrecision {
     }
 }
 #endif
+
+extension Date: EquatableWithPrecision {
+    public func isApproximatelyEqual(to other: Date, precision: TimeInterval) -> Bool {
+        abs(other.timeIntervalSince(self)) < precision
+    }
+}

@@ -1,12 +1,6 @@
 import XCTest
 import CloseEnough
 
-extension Date: EquatableWithPrecision {
-    public func isApproximatelyEqual(to other: Date, precision: TimeInterval) -> Bool {
-        abs(other.timeIntervalSince(self)) < precision
-    }
-}
-
 final class DateTests: XCTestCase {
 
     func testDate() {
