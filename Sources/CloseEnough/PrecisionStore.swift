@@ -6,7 +6,7 @@ struct PrecisionStore {
     subscript<T: EquatableWithPrecision>(_ type: T.Type) -> T.Precision? {
         get {
             guard let anyPrecision = storage[ObjectIdentifier(type)] else {
-                XCTFail("Attempt to compare values of type \(T.self) without first registering precision for that type")
+                XCTFail("Attempt to compare values of type \(T.self) without first registering precision for that type. Use 'withPrecisions(_:tests:)' and pass a type/precision pair for each type.")
                 return nil
             }
             guard let precision = anyPrecision as? T.Precision else {
