@@ -1,13 +1,17 @@
+import XCTestDynamicOverlay
+
 struct PrecisionStore {
     private var storage: [ObjectIdentifier: Any] = [:]
 
-    subscript<T: EquatableWithPrecision>(_ type: T.Type) -> T.Precision {
+    subscript<T: EquatableWithPrecision>(_ type: T.Type) -> T.Precision? {
         get {
             guard let anyPrecision = storage[ObjectIdentifier(type)] else {
-                fatalError("Attempt to compare values of type \(T.self) without first registering precision for that type")
+                XCTFail("Attempt to compare values of type \(T.self) without first registering precision for that type")
+                return nil
             }
             guard let precision = anyPrecision as? T.Precision else {
-                fatalError("Stored precision value \(anyPrecision) was not of expected type \(T.Precision.self)")
+                XCTFail("Stored precision value \(anyPrecision) was not of expected type \(T.Precision.self)")
+                return nil
             }
             return precision
         }
