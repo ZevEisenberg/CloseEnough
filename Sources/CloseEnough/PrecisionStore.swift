@@ -1,22 +1,22 @@
 struct PrecisionStore {
     private var storage: [ObjectIdentifier: Any] = [:]
 
-    subscript<T>(_ type: T.Type) -> T {
+    subscript<T: EquatableWithPrecision>(_ type: T.Type) -> T.Precision {
         get {
-            guard let value = storage[ObjectIdentifier(type)] else {
+            guard let anyPrecision = storage[ObjectIdentifier(type)] else {
                 fatalError("Attempt to compare values of type \(T.self) without first registering precision for that type")
             }
-            guard let typed = value as? T else {
-                fatalError("Stored precision value \(value) was not of expected type \(T.self)")
+            guard let precision = anyPrecision as? T.Precision else {
+                fatalError("Stored precision value \(anyPrecision) was not of expected type \(T.Precision.self)")
             }
-            return typed
+            return precision
         }
         set {
             storage[ObjectIdentifier(type)] = newValue
         }
     }
 
-    mutating func unregister<T>(_ type: T.Type) {
+    mutating func unregister<T: EquatableWithPrecision>(_ type: T.Type) {
         storage.removeValue(forKey: ObjectIdentifier(type))
     }
 

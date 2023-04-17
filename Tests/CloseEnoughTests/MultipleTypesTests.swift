@@ -20,15 +20,15 @@ final class MultipleTypesTests: XCTestCase {
         let b = Outer(angle: .radians(1.0002), double: 1, inner: Inner(double: 123.0002))
 
         withPrecisions([
-            Angle.radians(0.001),
-            0.001,
+            Angle.self: Angle.radians(0.001),
+            Double.self: 0.001,
         ]) {
             XCTAssertEqual(a, b)
         }
 
         withPrecisions([
-            Angle.radians(0.0001),
-            0.0001
+            Angle.self: Angle.radians(0.0001),
+            Double.self: 0.0001,
         ]) {
             XCTExpectFailure {
                 XCTAssertEqual(a, b)

@@ -11,7 +11,7 @@ public struct CloseEnough<Wrapped: EquatableWithPrecision>: Equatable {
 
     public static func ==(lhs: Self, rhs: Self) -> Bool {
         if isTesting {
-            let precision: Wrapped = globalPrecisionStore[Wrapped.self]
+            let precision: Wrapped.Precision = globalPrecisionStore[Wrapped.self]
             return lhs.wrappedValue.isApproximatelyEqual(to: rhs.wrappedValue, precision: precision)
         } else {
             return lhs.wrappedValue == rhs.wrappedValue
