@@ -32,6 +32,6 @@ struct PrecisionStore {
     mutating func register(value: Any, forKey key: ObjectIdentifier) {
         storage[key] = value
     }
-}
 
-var globalPrecisionStore = PrecisionStore()
+    @TaskLocal static var taskLocal = PrecisionStore()
+}
