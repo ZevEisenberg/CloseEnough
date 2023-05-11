@@ -1,0 +1,32 @@
+{
+  "configurations" : [
+    {
+      "id" : "02AA02A0-716D-42A2-8828-5D2484CEB07D",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:",
+          "identifier" : "CloseEnough",
+          "name" : "CloseEnough"
+        }
+      ]
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "CloseEnoughTests",
+        "name" : "CloseEnoughTests"
+      }
+    }
+  ],
+  "version" : 1
+}
