@@ -14,7 +14,7 @@ struct Outer: Equatable {
   var foo: Double
 
   @CloseEnough
-  var bar: Angle // SwiftUI's Angle type, for example
+  var bar: Date
 
   var inner: Inner // it works for nested structs too!
 }
@@ -27,19 +27,19 @@ struct Inner: Equatable {
 
 ### Test Code
 
-You must provide a precision value for each type that is present in the structs (including nested structs) that you are comparing. Failure to do so will produce a test-time fatal error telling you which type(s) you forgot to express a precision for. If you want to compare with no fuzziness, supply a precision of 0 (or the [additive identity](https://en.wikipedia.org/wiki/Additive_identity) for your type).
+You must provide a precision value for each type that is present in the structs (including nested structs) that you are comparing. Failure to do so will produce a test failure telling you which type(s) you forgot to express a precision for. If you want to compare with no fuzziness, supply a precision of 0 (or the [additive identity](https://en.wikipedia.org/wiki/Additive_identity) for your type).
 
 ```swift
 // Tests
 withPrecisions([
   Double.self: 0.0001,
-  Angle.self: Angle.degrees(0.0001),
+  Date.self: TimeInterval(10), // When comparing dates, difference is expressed as a time interval
 ]) {
   XCTAssertEqual(
     someValue,
     Outer(
       foo: 1.5,
-      bar: 0.2,
+      bar: Date(timeIntervalSinceReferenceDate: 1234),
       inner: Inner(
         baz: 11
       )

@@ -18,11 +18,14 @@ let package = Package(
         ),
     ],
     dependencies: [
+        .package(url: "https://github.com/pointfreeco/xctest-dynamic-overlay.git", exact: "0.8.4"), // should pin more leniently post-1.0
     ],
     targets: [
         .target(
             name: "CloseEnough",
-            dependencies: []
+            dependencies: [
+                .product(name: "XCTestDynamicOverlay", package: "xctest-dynamic-overlay"),
+            ]
         ),
         .testTarget(
             name: "CloseEnoughTests",
