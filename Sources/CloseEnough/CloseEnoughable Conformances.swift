@@ -1,20 +1,20 @@
-extension Comparable where Self: CloseEnoughable & SignedNumeric {
-    public func isApproximatelyEqual(to other: Self, tolerance: Self) -> Bool {
-        abs(self - other) < tolerance
+extension Comparable where Self: EquatableWithPrecision & SignedNumeric {
+    public func isApproximatelyEqual(to other: Self, precision: Self) -> Bool {
+        abs(self - other) < precision
     }
 }
 
 @available(iOS 14.0, macOS 11.0, macCatalyst 14.0, tvOS 14.0, watchOS 7.0, *)
-extension Float16: CloseEnoughable {}
+extension Float16: EquatableWithPrecision {}
 
-extension Float: CloseEnoughable {}
-extension Double: CloseEnoughable {}
+extension Float: EquatableWithPrecision {}
+extension Double: EquatableWithPrecision {}
 
 #if canImport(SwiftUI)
 import SwiftUI
-extension Angle: CloseEnoughable {
-    public func isApproximatelyEqual(to other: Angle, tolerance: Angle) -> Bool {
-        abs(self.degrees - other.degrees) < tolerance.degrees
+extension Angle: EquatableWithPrecision {
+    public func isApproximatelyEqual(to other: Angle, precision: Angle) -> Bool {
+        abs(self.degrees - other.degrees) < precision.degrees
     }
 }
 #endif

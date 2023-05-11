@@ -4,7 +4,7 @@ Tag your floating-point or floating-point-ish values with `@CloseEnoguh`, and th
 
 ## Single-Type Comparisons
 
-If you have structs with members of the same type (for example, `Double`), you can use `withEnoughCloseness` to compare them with a given precision:
+If you have structs with members of the same type (for example, `Double`), you can use `withPrecision` to compare them with a given precision:
 
 ### Declaration
 
@@ -29,7 +29,7 @@ struct Outer: Equatable {
 
 ```swift
 // Tests
-withEnoughCloseness(0.0001) {
+withPrecision(0.0001) {
   XCTAssertEqual(someValue, Outer(foo: 1.5, bar: 0.2, inner: Inner(baz: 11))
 }
 ```
@@ -54,11 +54,11 @@ struct MyStruct: Equatable {
 
 ```swift
 // Tests
-withEnoughClosenesses([Angle.degrees(0.0001), 0.0001]) {
+withPrecisions([Angle.degrees(0.0001), 0.0001]) {
   XCTAssertEqual(someValue, MyStruct(double: 1.5, angle: .degrees(3)))
 }
 ```
 
 ## Custom Types
 
-If you have a type that would benefit from close-enough comparison, conform it to the `CloseEnoughable` protocol and implement the required method, `isApproximatelyEqual(to:tolerance:)`. Then, you can use the `@CloseEnough` property wrapper in your own code!
+If you have a type that would benefit from close-enough comparison, conform it to the `EquatableWithPrecision` protocol and implement the required method, `isApproximatelyEqual(to:precision:)`. Then, you can use the `@CloseEnough` property wrapper in your own code!

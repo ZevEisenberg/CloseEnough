@@ -13,11 +13,11 @@ final class CloseEnoughAngleTests: XCTestCase {
         let a = MyThing(foo: .degrees(1))
         let b = MyThing(foo: .degrees(1.0002))
 
-        withEnoughCloseness(Angle.degrees(0.001)) {
+        withPrecision(Angle.degrees(0.001)) {
             XCTAssertEqual(a, b)
         }
 
-        withEnoughCloseness(Angle.degrees(0.0001)) {
+        withPrecision(Angle.degrees(0.0001)) {
             XCTExpectFailure {
                 XCTAssertEqual(a, b)
             }
@@ -32,11 +32,11 @@ final class CloseEnoughAngleTests: XCTestCase {
         let a = MyThing(foo: .radians(1))
         let b = MyThing(foo: .radians(1.0002))
 
-        withEnoughCloseness(Angle.radians(0.001)) {
+        withPrecision(Angle.radians(0.001)) {
             XCTAssertEqual(a, b)
         }
 
-        withEnoughCloseness(Angle.radians(0.0001)) {
+        withPrecision(Angle.radians(0.0001)) {
             XCTExpectFailure {
                 XCTAssertEqual(a, b)
             }
