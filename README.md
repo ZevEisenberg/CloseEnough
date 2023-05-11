@@ -27,7 +27,7 @@ struct Inner: Equatable {
 
 ### Test Code
 
-You must provide a precision value for each type that is present in the structs (including nested structs) that you are comparing. Failure to do so will produce a test-time fatal error telling you which type(s) you forgot to express a precision for. If you want to compare with no fuzziness, supply a precision of 0 (or the [additive identity](https://en.wikipedia.org/wiki/Additive_identity) for your type).
+You must provide a precision value for each type that is present in the structs (including nested structs) that you are comparing. Failure to do so will produce a test failure telling you which type(s) you forgot to express a precision for. If you want to compare with no fuzziness, supply a precision of 0 (or the [additive identity](https://en.wikipedia.org/wiki/Additive_identity) for your type).
 
 ```swift
 // Tests
