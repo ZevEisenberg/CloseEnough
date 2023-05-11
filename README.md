@@ -1,6 +1,6 @@
 # CloseEnough
 
-Tag your floating-point or floating-point-ish values with `@CloseEnoguh`, and then compare them with a given precision when using `XCTAssertEqual` on their parent structs. This is useful because, while `XCTAssertEqual` provides [a variant](https://developer.apple.com/documentation/xctest/2919914-xctassertequal) that takes a floating-point precision parameter, it doesn’t work with values inside structs, and it doesn’t work with your custom types. **CloseEnough** addresses both of these issues.
+Tag your floating-point or floating-point-ish values with `@CloseEnough`, and then compare them with a given precision when using `XCTAssertEqual` on their parent structs. This is useful because, while `XCTAssertEqual` provides [a variant](https://developer.apple.com/documentation/xctest/2919914-xctassertequal) that takes a floating-point precision parameter, it doesn’t work with values inside structs, and it doesn’t work with your custom types. **CloseEnough** addresses both of these issues.
 
 ## Usage
 
