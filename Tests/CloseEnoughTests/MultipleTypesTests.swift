@@ -3,9 +3,9 @@ import CloseEnough
 
 #if canImport(SwiftUI)
 import SwiftUI
-final class CloseEnoughBothTests: XCTestCase {
+final class MultipleTypesTests: XCTestCase {
 
-    func testCloseEnough_angleAndDouble() {
+    func testAngleAndDouble() {
         struct Inner: Equatable {
             @CloseEnough var double: Double
         }

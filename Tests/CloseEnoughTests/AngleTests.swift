@@ -3,9 +3,9 @@ import CloseEnough
 
 #if canImport(SwiftUI)
 import SwiftUI
-final class CloseEnoughAngleTests: XCTestCase {
+final class AngleTests: XCTestCase {
 
-    func testCloseEnoughAngle_Degrees() {
+    func testAngleDegrees() {
         struct MyThing: Equatable {
             @CloseEnough var foo: Angle
         }
@@ -24,7 +24,7 @@ final class CloseEnoughAngleTests: XCTestCase {
         }
     }
 
-    func testCloseEnoughAngle_Radians() {
+    func testAngleRadians() {
         struct MyThing: Equatable {
             @CloseEnough var foo: Angle
         }

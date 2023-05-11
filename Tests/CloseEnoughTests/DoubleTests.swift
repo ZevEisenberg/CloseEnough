@@ -1,9 +1,9 @@
 import XCTest
 import CloseEnough
 
-final class CloseEnoughDoubleTests: XCTestCase {
+final class DoubleTests: XCTestCase {
 
-    func testCloseEnoughDouble() {
+    func testDouble() {
         struct MyThing: Equatable {
             @CloseEnough var foo: Double
         }
