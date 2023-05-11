@@ -1,14 +1,11 @@
-extension Float: CloseEnoughable {
-    public func isApproximatelyEqual(to other: Float, tolerance: Float) -> Bool {
+extension Comparable where Self: CloseEnoughable & SignedNumeric {
+    public func isApproximatelyEqual(to other: Self, tolerance: Self) -> Bool {
         abs(self - other) < tolerance
     }
 }
 
-extension Double: CloseEnoughable {
-    public func isApproximatelyEqual(to other: Double, tolerance: Double) -> Bool {
-        abs(self - other) < tolerance
-    }
-}
+extension Float: CloseEnoughable {}
+extension Double: CloseEnoughable {}
 
 #if canImport(SwiftUI)
 import SwiftUI
