@@ -1,10 +1,11 @@
-extension Double: CloseEnoughable {
-    public func isApproximatelyEqual(to other: Double, tolerance: Double) -> Bool {
+extension Float: CloseEnoughable {
+    public func isApproximatelyEqual(to other: Float, tolerance: Float) -> Bool {
         abs(self - other) < tolerance
     }
 }
-extension Float: CloseEnoughable {
-    public func isApproximatelyEqual(to other: Float, tolerance: Float) -> Bool {
+
+extension Double: CloseEnoughable {
+    public func isApproximatelyEqual(to other: Double, tolerance: Double) -> Bool {
         abs(self - other) < tolerance
     }
 }
