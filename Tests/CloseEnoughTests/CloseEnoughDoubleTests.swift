@@ -1,9 +1,9 @@
 import XCTest
 import CloseEnough
 
-final class CloseEnoughTests: XCTestCase {
+final class CloseEnoughDoubleTests: XCTestCase {
 
-    func testCloseEnough() {
+    func testCloseEnoughDouble() {
         struct MyThing: Equatable {
             @CloseEnough var foo: Double
         }
@@ -13,11 +13,11 @@ final class CloseEnoughTests: XCTestCase {
 
         XCTAssertEqual(a, b) // use default closeness
 
-        withEnoughCloseness(0.001) {
+        withEnoughCloseness(double: 0.001) {
             XCTAssertEqual(a, b)
         }
 
-        withEnoughCloseness(0.0001) {
+        withEnoughCloseness(double: 0.0001) {
             XCTExpectFailure {
                 XCTAssertEqual(a, b)
             }
