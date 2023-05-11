@@ -1,24 +1,24 @@
 import XCTest
 import CloseEnough
 
-final class DoubleTests: XCTestCase {
+final class DateTests: XCTestCase {
 
-    func testDouble() {
+    func testDate() {
         struct MyThing: Equatable {
-            @CloseEnough var foo: Double
+            @CloseEnough var foo: Date
         }
 
-        let a = MyThing(foo: 1)
-        let b = MyThing(foo: 1.0002)
+        let a = MyThing(foo: Date(timeIntervalSince1970: 1234))
+        let b = MyThing(foo: Date(timeIntervalSince1970: 1234.0002))
 
         withPrecisions([
-            Double.self: 0.001,
+            Date.self: 0.001,
         ]) {
             XCTAssertEqual(a, b)
         }
 
         withPrecisions([
-            Double.self: 0.0001,
+            Date.self: 0.0001,
         ]) {
             XCTExpectFailure {
                 XCTAssertEqual(a, b)
