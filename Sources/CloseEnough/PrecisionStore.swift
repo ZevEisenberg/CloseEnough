@@ -10,7 +10,7 @@ struct PrecisionStore {
                 return nil
             }
             guard let precision = anyPrecision as? T.Precision else {
-                XCTFail("Stored precision value \(anyPrecision) was not of expected type \(T.Precision.self)")
+                XCTFail("Stored precision value \(anyPrecision) of type \(Swift.type(of: anyPrecision)) was not of expected type \(T.Precision.self), as specified by its \((any EquatableWithPrecision).self) conformance.")
                 return nil
             }
             return precision
