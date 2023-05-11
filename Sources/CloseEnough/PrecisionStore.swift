@@ -15,15 +15,6 @@ struct PrecisionStore {
         return precision
     }
 
-    mutating func unregister<T: EquatableWithPrecision>(_ type: T.Type) {
-        storage.removeValue(forKey: ObjectIdentifier(type))
-    }
-
-    @_disfavoredOverload
-    mutating func unregister(_ type: ObjectIdentifier) {
-        storage.removeValue(forKey: type)
-    }
-
     mutating func register(value: Any, forKey key: ObjectIdentifier) {
         storage[key] = value
     }
