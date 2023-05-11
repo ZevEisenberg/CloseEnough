@@ -36,7 +36,7 @@ withPrecision(0.0001) {
 
 ## Multiple-Type Comparisons
 
-If your structs have members of different types, you must provide a precision value for each type. Failure to do so will produce a test-type fatal error telling you which type(s) you forgot to express a precision for. If you want to compare exactly, supply a precision of 0 (or equivalent for your type).
+If your structs have members of different types, you must provide a precision value for each type. Failure to do so will produce a test-time fatal error telling you which type(s) you forgot to express a precision for. If you want to compare exactly, supply a precision of 0 (or equivalent for your type).
 
 ### Declaration
 
